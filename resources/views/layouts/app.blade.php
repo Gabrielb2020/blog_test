@@ -5,16 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Test</title>
 
+    {{-- Carga los estilos de Tailwind CSS compilados por Vite --}}
+    @vite('resources/css/app.css')
+
     {{-- Estilos de Livewire --}}
     @livewireStyles
 </head>
-<body>
+<body class="bg-gray-100 min-h-screen flex flex-col">
 
-{{-- Contenido dinámico de cada página Livewire --}}
-{{ $slot }}
+<div class="container mx-auto p-6 flex-grow">
+    {{ $slot }} {{-- Contenido dinámico --}}
+</div>
 
-{{-- Scripts de Livewire --}}
+{{-- Scripts de Livewire y Vite --}}
 @livewireScripts
-
+@vite('resources/js/app.js')
 </body>
 </html>
