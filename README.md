@@ -23,3 +23,7 @@ Prueba técnica - Backend con Laravel y Livewire.
 4. Generar la clave: `php artisan key:generate`
 5. Migrar la base de datos: `php artisan migrate`
 6. Iniciar el servidor: `php artisan serve`
+
+## Credenciales del administrador
+- Email: admin@blogtest.com
+- Contraseña: 123456
