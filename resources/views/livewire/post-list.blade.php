@@ -34,4 +34,15 @@
             Register
         </a>
     </div>
+
+    <div class="text-center mt-8">
+        <a href="{{ route('users') }}" class="inline-block bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition duration-200">
+            gestion de usuarios
+        </a>
+
+    </div>
+
+    <a href="{{ route('login') }}" class="inline-block bg-gray-600 text-gray-500 px-6 py-2 rounded-lg hover:bg-gray-700 transition duration-200">
+        Login
+    </a>
 </div>
