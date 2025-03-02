@@ -25,6 +25,12 @@ class PostList extends Component
     ];
 
     /**
+     * Escucha el evento 'postCreated' para refrescar la lista y mantanga actuliazado a todos los usuarios.
+     */
+    protected $listeners = ['postCreated' => '$refresh'];
+
+
+    /**
      * Crea una nueva publicación asociada al usuario autenticado.
      */
     public function createPost()
