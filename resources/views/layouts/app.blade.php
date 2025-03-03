@@ -13,6 +13,9 @@
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
 
+{{-- Componente de alerta siempre visible --}}
+<livewire:alert />
+
 <div class="container mx-auto p-6 flex-grow">
     {{ $slot }} {{-- Contenido dinámico --}}
 </div>

@@ -30,25 +30,28 @@
         <a href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition duration-200">
             Register
         </a>
-        <br>
-        <a href="{{ route('login') }}" class="inline-block bg-gray-600 text-gray-500 px-6 py-2 rounded-lg hover:bg-gray-700 transition duration-200">
-            Login
-        </a>
-        <br>
+        @if (!Auth::check())
+            <a href="{{ route('login') }}" class="inline-block bg-gray-600 text-white px-6 py-2 rounded-lg hover:bg-gray-700 transition duration-200">
+                Login
+            </a>
+        @else
+            <button wire:click="logout" class="inline-block bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition duration-200">
+                Cerrar Sesión
+            </button>
+        @endif
         <a href="{{ route('users') }}" class="inline-block bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition duration-200">
-            gestion de usuarios
+            Gestión de Usuarios
         </a>
-        <br>
         @auth
             @if (Auth::user()->is_active)
-                <button wire:click="openModal" class="inline-block bg-green-600 text-gray-600 px-6 py-2 rounded-lg hover:bg-green-700 transition duration-200">
+                <button wire:click="openModal" class="inline-block bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition duration-200">
                     Crear Publicación
                 </button>
             @endif
         @endauth
     </div>
 
-    {{-- Modal para crear publicación --}}
+    <!-- Modal para crear publicación -->
     @if ($showModal)
         <div class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
             <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
