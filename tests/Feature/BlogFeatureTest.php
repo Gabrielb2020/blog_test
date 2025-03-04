@@ -27,7 +27,7 @@ class BlogFeatureTest extends TestCase
             ->set('email', 'testadmin@blogtest.com')
             ->set('password', 'password123')
             ->call('login')
-            ->assertRedirect('/');
+            ->assertRedirect(route('home'));
 
         $this->assertAuthenticatedAs($admin);
 

@@ -1,9 +1,18 @@
 <div class="space-y-8 relative">
     <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Publicaciones del Blog</h1>
 
-    <div class="max-w-md mx-auto mb-6">
-        <label class="block text-sm font-medium text-gray-700 mb-2">Buscar por fecha</label>
-        <input type="date" wire:model.live="searchDate" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+    <div class="max-w-md mx-auto mb-6 flex items-end space-x-4">
+        <div class="flex-1">
+            <label class="block text-sm font-medium text-gray-700 mb-2">Buscar por fecha</label>
+            <input type="date" wire:model.live="searchDate" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+        </div>
+        @auth
+            @if (Auth::user()->is_active)
+                <button wire:click="openModal" class="btn-primero text-white">
+                    Crear Publicación
+                </button>
+            @endif
+        @endauth
     </div>
 
     <div class="flex flex-wrap gap-6 p-4">
@@ -26,53 +35,30 @@
         @endforelse
     </div>
 
-    <div class="text-center mt-8 space-x-4">
-        <a href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition duration-200">
-            Register
-        </a>
-        @if (!Auth::check())
-            <a href="{{ route('login') }}" class="inline-block bg-gray-600 text-white px-6 py-2 rounded-lg hover:bg-gray-700 transition duration-200">
-                Login
-            </a>
-        @else
-            <button wire:click="logout" class="inline-block bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition duration-200">
-                Cerrar Sesión
-            </button>
-        @endif
-        <a href="{{ route('users') }}" class="inline-block bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition duration-200">
-            Gestión de Usuarios
-        </a>
-        @auth
-            @if (Auth::user()->is_active)
-                <button wire:click="openModal" class="inline-block bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition duration-200">
-                    Crear Publicación
-                </button>
-            @endif
-        @endauth
-    </div>
-
     <!-- Modal para crear publicación -->
     @if ($showModal)
-        <div class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
-            <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+        <div class="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+
+
+        <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
                 <h2 class="text-2xl font-bold text-gray-800 mb-4">Nueva Publicación</h2>
 
                 <form wire:submit.prevent="createPost" class="space-y-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Título</label>
-                        <input wire:model.live="title" type="text" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Título de la publicación">
-                        @error('title') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        <input wire:model="title" type="text" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Título de la publicación">
+                        @error('title') <span class="text-red-500 text-sm block mt-1">{{ $message }}</span> @enderror
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Descripción</label>
-                        <textarea wire:model.live="description" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" rows="4" placeholder="Escribe la descripción aquí"></textarea>
-                        @error('description') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        <textarea wire:model="description" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" rows="4" placeholder="Escribe la descripción aquí"></textarea>
+                        @error('description') <span class="text-red-500 text-sm block mt-1">{{ $message }}</span> @enderror
                     </div>
 
                     <div class="flex justify-end space-x-2">
                         <button type="button" wire:click="closeModal" class="px-4 py-2 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300">Cancelar</button>
-                        <button type="submit" class="px-4 py-2 text-white bg-indigo-600 rounded-lg hover:bg-indigo-700">Crear</button>
+                        <button type="submit" class="btn-primero text-white">Crear</button>
                     </div>
                 </form>
             </div>

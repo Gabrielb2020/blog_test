@@ -19,7 +19,7 @@
                 <td class="px-6 py-4 whitespace-nowrap text-right">
                     <button
                         wire:click="toggleActive({{ $user->id }})"
-                        class="px-4 py-1 text-gray-500 rounded-lg text-sm {{ $user->is_active ? 'bg-red-600 hover:bg-red-700' : 'bg-green-600 hover:bg-green-700' }} transition duration-200"
+                        class="px-4 py-1 text-white rounded-lg text-sm {{ $user->is_active ? 'bg-red-600 hover:bg-red-700' : 'bg-green-600 hover:bg-green-700' }} transition duration-200"
                     >
                         {{ $user->is_active ? 'Desactivar' : 'Activar' }}
                     </button>

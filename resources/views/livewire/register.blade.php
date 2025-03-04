@@ -1,5 +1,5 @@
 <div class="bg-white p-6 rounded-lg shadow-md max-w-md mx-auto">
-    <h1 class="text-2xl font-bold text-gray-800 mb-6">Registro</h1>
+    <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">Registro</h1>
 
     {{-- Mensaje de éxito tras el registro --}}
     @if (session('message'))
@@ -36,6 +36,11 @@
             <input wire:model.live="password_confirmation" type="password" class="w-full p-2 border rounded focus:border-indigo-500">
         </div>
 
-        <button type="submit" class="w-full bg-indigo-600 text-white p-2 rounded hover:bg-indigo-700">Registrarse</button>
+        <div class="flex flex-col items-center">
+            <button type="submit" class="btn-primero text-white">Registrarse</button>
+
+            <!-- Botón "Ir al inicio" -->
+            <strong class="mt-3 text-gray-500 hover:underline text-sm"><a href="{{ route('home') }}" >Ir al inicio</a></strong>
+        </div>
     </form>
 </div>

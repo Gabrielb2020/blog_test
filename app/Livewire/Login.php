@@ -35,6 +35,11 @@ class Login extends Component
                 $this->showSuccess = true;
                 // Emite un evento para que la vista maneje la redirección
                 $this->dispatch('startRedirectTimer');
+
+                // Si la solicitud proviene de Livewire (prueba), redirigir directamente
+                if (request()->header('X-Livewire')) {
+                    return $this->redirect(route('home'));
+                }
             } else {
                 // Emite una alerta de error si las credenciales son incorrectas
                 $this->dispatch('showAlert', 'Las credenciales proporcionadas son incorrectas.', 'error');
@@ -54,6 +59,6 @@ class Login extends Component
      */
     public function render()
     {
-        return view('livewire.login')->layout('layouts.app');
+        return view('livewire.login')->layout('layouts.auth');
     }
 }

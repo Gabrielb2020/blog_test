@@ -7,7 +7,7 @@ use Livewire\Component;
 class Alert extends Component
 {
     public $message = '';
-    public $type = 'info'; // info, success, error
+    public $type = 'info';
     public $show = false;
 
     /**

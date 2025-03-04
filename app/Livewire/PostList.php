@@ -64,9 +64,10 @@ class PostList extends Component
             return;
         }
 
-        try {
-            $this->validate();
+        // Ejecuta la validación explícitamente
+        $this->validate();
 
+        try {
             Post::create([
                 'user_id' => Auth::id(),
                 'title' => $this->title,
