@@ -10,20 +10,29 @@
 # Blog Test
 Prueba técnica - Backend con Laravel y Livewire.
 
-## Stack utilizado
-- PHP 8.2
-- Laravel 12.0
-- Livewire 3.6
-- MySQL (o SQLite)
+## Requisitos previos
+Antes de instalar el proyecto, asegúrate de tener instalado lo siguiente:
+- **PHP 8.2 o superior**: Puedes verificarlo con `php -v`.
+- **Composer**: Para instalar dependencias de PHP (`composer --version`).
+- **Node.js y npm**: Para manejar dependencias frontend (`node -v` y `npm -v`).
+- **MySQL**: Asegúrate de tener un servidor MySQL corriendo (o usa SQLite si lo prefieres).
+- **Git**: Para clonar el repositorio (`git --version`).
+
+## Stack tecnológico
+- **PHP 8.2**
+- **Laravel 12.0**
+- **Livewire 3.6**
+- **MySQL** (base de datos local; también se puede usar SQLite)
+- **Tailwind CSS** (para estilos)
+- **Flowbite** (para componentes interactivos como dropdowns)
+- **Node.js y npm** (para manejar dependencias frontend)
 
 ## Instalación
 1. Clonar el repositorio: `git clone <URL>`
-2. Instalar dependencias: `composer install`
+2. Instalar dependencias: `composer install` y `npm install`
 3. Copiar `.env.example` a `.env` y configurar la base de datos.
 4. Generar la clave: `php artisan key:generate`
 5. Migrar la base de datos: `php artisan migrate`
 6. Iniciar el servidor: `php artisan serve`
+7. Importante ejecutar a la par en otra terminal php artisan serve esto: `npm run dev`, esto para cargar los estilos de tailwind.
 
-## Credenciales del administrador
-- Email: admin@blogtest.com
-- Contraseña: 123456
